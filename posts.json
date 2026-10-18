@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated_at": "2026-10-18T20:10:00+08:00",
+    "updated_at": "2026-10-18T22:30:00+08:00",
     "version": 1
   },
   "posts": [
@@ -8,7 +8,9 @@
       "slug": "welcome-to-fendashi-forest",
       "title": "欢迎来到芬达石森林 🌻",
       "date": "2026-10-18",
-      "tags": ["projects"],
+      "tags": [
+        "projects"
+      ],
       "excerpt": "建了一个小地方，准备把我种过的东西、想要的东西、想成为的人，都放进来慢慢长。",
       "views": 248,
       "comments": 6,
@@ -18,7 +20,9 @@
       "slug": "tools-i-use-daily",
       "title": "我常用的几件小工具",
       "date": "2026-10-17",
-      "tags": ["tools"],
+      "tags": [
+        "tools"
+      ],
       "excerpt": "能稳定用上的那几个，才叫工具；剩下的都是「收藏夹里的表演」。",
       "views": 148,
       "comments": 2,
@@ -28,7 +32,10 @@
       "slug": "language-learning-from-zero",
       "title": "一门语言怎么从 0 走到能聊",
       "date": "2026-10-12",
-      "tags": ["notes", "skills"],
+      "tags": [
+        "notes",
+        "skills"
+      ],
       "excerpt": "从 0 到能开口：现状盘点、18 个月时间表、每周分配的逻辑。",
       "views": 267,
       "comments": 6,
@@ -38,7 +45,9 @@
       "slug": "saving-habits-that-work",
       "title": "我的几条攒钱笨办法",
       "date": "2026-10-08",
-      "tags": ["life"],
+      "tags": [
+        "life"
+      ],
       "excerpt": "先把账记清楚，再谈节奏。每条单独都不稀奇，叠在一起就有点用。",
       "views": 95,
       "comments": 1,
@@ -48,7 +57,10 @@
       "slug": "long-term-roadmap-framework",
       "title": "做一份能撑一年的长期计划",
       "date": "2026-10-05",
-      "tags": ["life", "notes"],
+      "tags": [
+        "life",
+        "notes"
+      ],
       "excerpt": "做大决定的时候，怎么把「为什么 / 路径 / 节点 / 风险」拆清楚。",
       "views": 178,
       "comments": 3,
@@ -58,7 +70,9 @@
       "slug": "piano-practice-log-week-12",
       "title": "练琴周记 · 一周的小反思",
       "date": "2026-10-02",
-      "tags": ["skills"],
+      "tags": [
+        "skills"
+      ],
       "excerpt": "每天 30 分钟的稳定性 &gt; 一周一次 5 小时。",
       "views": 110,
       "comments": 1,
@@ -68,7 +82,10 @@
       "slug": "guzheng-memories",
       "title": "教过小朋友之后，我留下了什么",
       "date": "2026-09-28",
-      "tags": ["skills", "life"],
+      "tags": [
+        "skills",
+        "life"
+      ],
       "excerpt": "教过一群小朋友之后，留下 3 条到现在还在用的学习方法。",
       "views": 62,
       "comments": 0,
