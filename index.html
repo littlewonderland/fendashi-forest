@@ -164,6 +164,10 @@
         常用
       </a>
       <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+        分类
+      </a>
+      <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         留言
       </a>
@@ -190,15 +194,15 @@
       <div class="profile-label">关于</div>
       <p class="profile-text">一个收集日常的小角落。种着向日葵的小森林，慢慢长。</p>
       <div class="profile-stats">
-        <div><strong>7</strong>篇</div>
-        <div><strong>1.1k</strong>阅读</div>
-        <div><strong>17</strong>留言</div>
+        <div><strong>627</strong>篇</div>
+        <div><strong>1.2k</strong>阅读</div>
+        <div><strong>19</strong>留言</div>
       </div>
     </div>
 
     <div class="sidebar-footer">
+      <a href="./categories.html">全部分类</a>
       <a href="#">关于本站</a>
-      <a href="#">RSS 订阅</a>
       <a href="#">联系</a>
     </div>
   </aside>
@@ -211,6 +215,12 @@
       <div class="tab is-active" data-sort="latest">最新发布</div>
       <div class="tab" data-sort="hot">热度排序</div>
       <div class="tab" data-sort="comments">评论排序</div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+
+    <!-- category filter -->
+    <div class="cat-bar-wrap">
+      <div class="cat-bar" id="catBar"></div>
     </div>
 
     <!-- quote (centered card) -->
@@ -228,6 +238,7 @@
     <div class="posts" id="postList">
       <div class="empty">加载中…</div>
     </div>
+    <button class="load-more" id="loadMore" style="display:none;">加载更多</button>
 
     <!-- footer -->
     <div class="footer">

@@ -46,12 +46,6 @@
       <div class="brand-avatar">芬</div>
       <span class="brand-name">芬达石森林</span>
     </div>
-    <div class="search-wrap">
-      <span class="search-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </span>
-      <input type="search" class="search-input" placeholder="搜索文章..." autocomplete="off" spellcheck="false">
-    </div>
     <nav class="nav" aria-label="主导航">
       <a class="nav-item" href="../index.html">常用</a>
       <a class="nav-item" href="#">留言</a>
@@ -60,10 +54,6 @@
       <a class="nav-item" href="#">友圈</a>
       <a class="nav-item" href="#">友链</a>
     </nav>
-    <div class="profile">
-      <div class="profile-label">关于</div>
-      <p class="profile-text">一个收集日常的小角落。种着向日葵的小森林，慢慢长。</p>
-    </div>
   </aside>
 
   <main class="main">
@@ -85,27 +75,28 @@
       </div>
 
       <div class="post-content">
-        <p>先把账记清楚，再谈节奏。这几条不是理财技巧，是生活方法。每条单独拿出来都不稀奇，叠在一起就有点用。</p>
 
-        <h2>笨办法 1：把每一笔都记下来</h2>
-        <p>不是记账软件，是「看见」。我以前不知道自己一个月喝几杯咖啡，直到开始记。一旦看见就自动减少——人的意志力其实没那么强，但「看见自己的行为」有。</p>
+                <p>先把账记清楚，再谈节奏。这几条不是理财技巧，是生活方法。每条单独拿出来都不稀奇，叠在一起就有点用。</p>
 
-        <h2>笨办法 2：把支出分成「需要 / 想要 / 不知道」</h2>
-        <p>「需要」的钱不动；「想要」的钱给一个上限，剩下的存起来；「不知道」的钱先放 7 天再决定。7 天后还想买才买。</p>
+                <h2>笨办法 1：把每一笔都记下来</h2>
+                <p>不是记账软件，是「看见」。我以前不知道自己一个月喝几杯咖啡，直到开始记。一旦看见就自动减少——人的意志力其实没那么强，但「看见自己的行为」有。</p>
 
-        <h2>笨办法 3：自动转账，先进账户再花</h2>
-        <p>每月发工资当天，先把要存的部分自动转入另一个账户，剩下的才是「可以花的」。顺序一颠倒，结果就反过来——花剩下的钱，永远攒不下来。</p>
+                <h2>笨办法 2：把支出分成「需要 / 想要 / 不知道」</h2>
+                <p>「需要」的钱不动；「想要」的钱给一个上限，剩下的存起来；「不知道」的钱先放 7 天再决定。7 天后还想买才买。</p>
 
-        <h2>笨办法 4：定一个储蓄率目标，不定绝对数</h2>
-        <p>「今年存一笔大数字」压力太大容易放弃。「每月存 30%」可执行得多。比例比绝对值稳，因为收入会变。</p>
+                <h2>笨办法 3：自动转账，先进账户再花</h2>
+                <p>每月发工资当天，先把要存的部分自动转入另一个账户，剩下的才是「可以花的」。顺序一颠倒，结果就反过来——花剩下的钱，永远攒不下来。</p>
 
-        <h2>笨办法 5：每月复盘一次，但不要每天看</h2>
-        <p>每天看账户余额会让人焦虑 / 上头。固定每月某一天复盘，看这个月哪些地方可以调，第二天改。其它时间别看。</p>
+                <h2>笨办法 4：定一个储蓄率目标，不定绝对数</h2>
+                <p>「今年存 10 万」压力太大容易放弃。「每月存 30%」可执行得多。比例比绝对值稳，因为收入会变。</p>
 
-        <h2>笨办法 6：不强求 1 个月就把数字打正</h2>
-        <p>第 1 个月能把记账系统跑通就够了。先让系统跑 3 个月，再来调目标。第一个月就冲刺最容易崩。</p>
+                <h2>笨办法 5：每月复盘一次，但不要每天看</h2>
+                <p>每天看账户余额会让人焦虑 / 上头。固定每月某一天复盘，看这个月哪些地方可以调，第二天改。其它时间别看。</p>
 
-        <blockquote>钱不是攒出来的，是「不被乱花出去 + 流向高收益通道」两个动作的副产物。前者是防守，后者是进攻。两个都做才稳。</blockquote>
+                <h2>笨办法 6：不强求 1 个月就把数字打正</h2>
+                <p>第 1 个月能把记账系统跑通就够了。先让系统跑 3 个月，再来调目标。第一个月就冲刺最容易崩。</p>
+
+                <blockquote>钱不是攒出来的，是「不被乱花出去 + 流向高收益通道」两个动作的副产物。前者是防守，后者是进攻。两个都做才稳。</blockquote>
       </div>
 
       <div class="post-page-footer">
@@ -118,7 +109,6 @@
 
 <script>
   const saved = localStorage.getItem('fendashi-theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
   document.documentElement.setAttribute('data-theme', saved);
   const btn = document.getElementById('themeBtnMobile');
   if (btn) btn.addEventListener('click', () => {
