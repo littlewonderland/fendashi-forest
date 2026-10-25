@@ -3,29 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全部分类 · 芬达石森林</title>
-  <meta name="description" content="芬达石森林的全部收藏分类。">
+  <title>分类 · 芬达石森林</title>
+  <meta name="description" content="按主题浏览全部收藏卡片。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://littlewonderland.github.io/fendashi-forest/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="芬达石森林">
+  <meta property="og:title" content="分类 · 芬达石森林">
+  <meta property="og:description" content="按主题浏览全部收藏卡片。">
+  <meta property="og:url" content="https://littlewonderland.github.io/fendashi-forest/">
+  <meta property="og:image" content="https://littlewonderland.github.io/fendashi-forest/og.png">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="分类 · 芬达石森林">
+  <meta name="twitter:description" content="按主题浏览全部收藏卡片。">
+  <link rel="alternate" type="application/rss+xml" title="芬达石森林" href="../feed.xml">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%232c2c2c'/%3E%3Ctext x='20' y='28' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='700' fill='%23fff'%3E芬%3C/text%3E%3C/svg%3E">
+  <script>
+    (function(){try{var t=localStorage.getItem('fendashi-theme')||'light';
+    document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
 </head>
-<body>
+<body data-base="">
+
+
 
 <div class="bg-canvas" aria-hidden="true">
-  <svg style="top: 6%; left: 8%; width: 90px;" viewBox="0 0 100 100">
+  <svg style="top: 8%; left: 6%; width: 80px;" viewBox="0 0 100 100">
     <ellipse cx="50" cy="65" rx="22" ry="25"/>
     <ellipse cx="50" cy="40" rx="15" ry="20"/>
     <ellipse cx="42" cy="22" rx="3.5" ry="14" transform="rotate(-8 42 22)"/>
     <ellipse cx="58" cy="22" rx="3.5" ry="14" transform="rotate(8 58 22)"/>
   </svg>
-  <svg style="top: 30%; right: 8%; width: 100px;" viewBox="0 0 130 70">
+  <svg style="top: 24%; right: 8%; width: 100px;" viewBox="0 0 130 70">
     <path d="M 15 50 Q 10 25 40 22 Q 80 18 105 28 Q 118 30 118 42 Q 118 54 105 56 Q 80 62 40 58 Q 18 56 15 50 Z"/>
     <path d="M 60 22 Q 65 8 75 10 Q 80 12 78 18 Q 72 22 65 22"/>
   </svg>
-  <svg style="top: 62%; left: 10%; width: 80px;" viewBox="0 0 100 100">
+  <svg style="top: 60%; left: 12%; width: 70px;" viewBox="0 0 100 100">
     <ellipse cx="50" cy="60" rx="22" ry="28"/>
     <circle cx="50" cy="35" r="20"/>
     <path d="M 32 28 L 28 12 L 40 22"/>
     <path d="M 68 28 L 72 12 L 60 22"/>
+  </svg>
+  <svg style="top: 78%; right: 12%; width: 70px;" viewBox="0 0 100 60">
+    <path d="M 18 42 Q 8 42 8 32 Q 8 22 20 22 Q 22 12 36 14 Q 42 6 54 10 Q 68 8 70 20 Q 84 18 88 28 Q 96 32 90 42 Q 90 50 78 50 L 22 50 Q 12 50 18 42 Z"/>
   </svg>
 </div>
 
@@ -35,7 +57,10 @@
     <span class="brand-name">芬达石森林</span>
   </div>
   <div class="topbar-actions">
-    <button class="topbar-btn" id="themeBtnMobile" aria-label="主题">
+    <button class="topbar-btn" id="menuBtn" aria-label="菜单" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <button class="topbar-btn" id="themeBtnMobile" aria-label="切换主题">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
   </div>
@@ -57,110 +82,196 @@
     </div>
 
     <nav class="nav" aria-label="主导航">
-      <a class="nav-item" href="./index.html">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+      <a class="nav-item" href="index.html" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
         常用
       </a>
-      <a class="nav-item is-active" href="./categories.html">
+      <a class="nav-item is-active" href="categories.html" data-nav="categories">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
         分类
       </a>
-      <a class="nav-item" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        留言
+      <a class="nav-item" href="archive.html" data-nav="archive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg>
+        归档
       </a>
-      <a class="nav-item" href="#">相册</a>
-      <a class="nav-item" href="#">归档</a>
-      <a class="nav-item" href="#">友链</a>
+      <a class="nav-item" href="tags.html" data-nav="tags">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg>
+        标签
+      </a>
+      <a class="nav-item" href="folders.html" data-nav="folders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        收藏夹
+      </a>
+      <a class="nav-item" href="search.html" data-nav="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        搜索
+      </a>
+      <a class="nav-item" href="links.html" data-nav="links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        友链
+      </a>
+      <a class="nav-item" href="about.html" data-nav="about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        关于
+      </a>
     </nav>
 
     <div class="profile">
       <div class="profile-label">关于</div>
       <p class="profile-text">一个收集日常的小角落。种着向日葵的小森林，慢慢长。</p>
-      <div class="profile-stats">
-        <div><strong>627</strong>篇</div>
-        <div><strong>1.2k</strong>阅读</div>
-        <div><strong>19</strong>留言</div>
+      <div class="profile-stats" id="siteStats">
+        <div><strong>—</strong>篇</div>
+        <div><strong>—</strong>阅读</div>
+        <div><strong>—</strong>留言</div>
       </div>
     </div>
 
     <div class="sidebar-footer">
-      <a href="./index.html">回到首页</a>
-      <a href="#">关于本站</a>
-      <a href="#">联系</a>
+      <a href="categories.html">全部分类</a>
+      <a href="archive.html">归档</a>
+      <a href="links.html">友链</a>
+      <a href="about.html">关于本站</a>
+      <a href="feed.xml">RSS</a>
     </div>
   </aside>
 
+  <div class="nav-drawer" id="navDrawer">
+    <nav class="nav nav-drawer-nav" aria-label="移动端导航">
+      <a class="nav-item" href="index.html" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        常用
+      </a>
+      <a class="nav-item is-active" href="categories.html" data-nav="categories">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+        分类
+      </a>
+      <a class="nav-item" href="archive.html" data-nav="archive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg>
+        归档
+      </a>
+      <a class="nav-item" href="tags.html" data-nav="tags">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg>
+        标签
+      </a>
+      <a class="nav-item" href="folders.html" data-nav="folders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        收藏夹
+      </a>
+      <a class="nav-item" href="search.html" data-nav="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        搜索
+      </a>
+      <a class="nav-item" href="links.html" data-nav="links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        友链
+      </a>
+      <a class="nav-item" href="about.html" data-nav="about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        关于
+      </a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <a href="feed.xml">RSS</a> ·
+      <a href="about.html">关于本站</a> ·
+      <a href="links.html">友链</a>
+    </div>
+  </div>
+
   <main class="main">
-    <div class="tabs" style="border-bottom:none;">
-      <div class="tab is-active" data-sort="latest">按主题</div>
+
+    <div class="page-head">
+      <h1 class="page-title">分类</h1>
+      <p class="page-desc">15 个主题 · 共 627 篇。点进去看该主题下的全部卡片。</p>
     </div>
 
-    <h1 style="font-size:24px;margin:4px 0 6px;">全部分类</h1>
-    <p style="font-size:13.5px;color:var(--text-2);margin:0 0 8px;line-height:1.8;">
-      这里收录了 620 篇公开网络上的实用笔记，按主题重新归档。每一篇都附有原文链接，方便回溯与核对。
-    </p>
-
-    <div class="cat-index" id="catIndex"></div>
-
-    <h2 style="font-size:16px;margin:36px 0 12px;font-weight:600;">原始收藏夹</h2>
-    <p style="font-size:13px;color:var(--text-3);margin:0 0 14px;line-height:1.8;">
-      下面是当初收藏时用的原始夹子名，每篇文章都标注了它来自哪个夹子。
-    </p>
-    <table class="folder-table" id="folderTable"></table>
+    <div class="cat-index">
+      <a class="cat-card" href="index.html#career">
+        <span class="cat-card-name">职场成长</span>
+        <span class="cat-card-count">137</span>
+        <span class="cat-card-desc">求职、考证、副业、职业路径，以及那些「没人告诉你」的经验差。</span>
+      </a>
+      <a class="cat-card" href="index.html#fitness">
+        <span class="cat-card-name">健身健康</span>
+        <span class="cat-card-count">103</span>
+        <span class="cat-card-desc">体态、居家训练、饮食作息，以及不内耗的健康方法。</span>
+      </a>
+      <a class="cat-card" href="index.html#growth">
+        <span class="cat-card-name">自我成长</span>
+        <span class="cat-card-count">90</span>
+        <span class="cat-card-desc">认知、表达、习惯、书单，和那些突然想明白的时刻。</span>
+      </a>
+      <a class="cat-card" href="index.html#editing">
+        <span class="cat-card-name">影音剪辑</span>
+        <span class="cat-card-count">88</span>
+        <span class="cat-card-desc">剪映 / PR 技巧、调色、字幕、转场与文案。</span>
+      </a>
+      <a class="cat-card" href="index.html#money">
+        <span class="cat-card-name">理财消费</span>
+        <span class="cat-card-count">44</span>
+        <span class="cat-card-desc">攒钱、省钱、避坑，买什么与不买什么。</span>
+      </a>
+      <a class="cat-card" href="index.html#life">
+        <span class="cat-card-name">生活杂项</span>
+        <span class="cat-card-count">42</span>
+        <span class="cat-card-desc">好用的日用品、桌面、收纳，和生活里的小确幸。</span>
+      </a>
+      <a class="cat-card" href="index.html#sewing">
+        <span class="cat-card-name">缝纫手作</span>
+        <span class="cat-card-count">41</span>
+        <span class="cat-card-desc">打版、缝纫、钩织、手工与创作过程。</span>
+      </a>
+      <a class="cat-card" href="index.html#travel">
+        <span class="cat-card-name">旅行户外</span>
+        <span class="cat-card-count">14</span>
+        <span class="cat-card-desc">路线、装备、露营、徒步与在路上。</span>
+      </a>
+      <a class="cat-card" href="index.html#game">
+        <span class="cat-card-name">游戏娱乐</span>
+        <span class="cat-card-count">12</span>
+        <span class="cat-card-desc">游戏推荐、玩法、装备与解压。</span>
+      </a>
+      <a class="cat-card" href="index.html#home">
+        <span class="cat-card-name">居住家装</span>
+        <span class="cat-card-count">12</span>
+        <span class="cat-card-desc">租房改造、收纳、家居好物与布置。</span>
+      </a>
+      <a class="cat-card" href="index.html#language">
+        <span class="cat-card-name">语言学习</span>
+        <span class="cat-card-count">12</span>
+        <span class="cat-card-desc">从零到能聊的路径、备考经验与学习方法。</span>
+      </a>
+      <a class="cat-card" href="index.html#food">
+        <span class="cat-card-name">饮食营养</span>
+        <span class="cat-card-count">10</span>
+        <span class="cat-card-desc">食谱、营养常识，以及外食怎么点。</span>
+      </a>
+      <a class="cat-card" href="index.html#love">
+        <span class="cat-card-name">情感关系</span>
+        <span class="cat-card-count">8</span>
+        <span class="cat-card-desc">亲密关系、沟通、自我边界与相处。</span>
+      </a>
+      <a class="cat-card" href="index.html#pets">
+        <span class="cat-card-name">萌宠动物</span>
+        <span class="cat-card-count">7</span>
+        <span class="cat-card-desc">猫狗日常、养宠经验与治愈时刻。</span>
+      </a>
+      <a class="cat-card" href="index.html#journal">
+        <span class="cat-card-name">手记</span>
+        <span class="cat-card-count">7</span>
+        <span class="cat-card-desc">这个博客自己写的记录。</span>
+      </a>
+    </div>
 
     <div class="footer">
       © 芬达石森林 2026 ·
-      <a href="#">Typecho.zeze</a>
+      <a href="feed.xml">RSS</a> ·
+      <a href="archive.html">归档</a> ·
+      <a href="about.html">关于</a>
     </div>
   </main>
 </div>
 
-<script>
-(async function () {
-  const res = await fetch('posts.json', { cache: 'no-cache' });
-  const data = await res.json();
-  const cats = data.categories || [];
-  const folders = data.folders || [];
-
-  const order = ['职场成长','健身健康','自我成长','影音剪辑','理财消费','生活杂项','缝纫手作',
-                 '旅行户外','游戏娱乐','居住家装','语言学习','饮食营养','情感关系','萌宠动物','journal'];
-  const map = {};
-  cats.forEach(c => { map[c.name] = c; });
-  const ordered = order.filter(n => map[n]).map(n => map[n])
-    .concat(cats.filter(c => !order.includes(c.name)));
-
-  document.getElementById('catIndex').innerHTML = ordered.map(c => {
-    const href = c.slug === 'all' ? './index.html'
-      : c.slug === 'journal' ? './index.html#journal'
-      : './index.html#' + c.slug;
-    return `<a class="cat-card" href="${href}">
-      <h3>${esc(c.name)}<span class="cat-num">${c.count} 篇</span></h3>
-      <p>${esc(c.desc || '')}</p>
-    </a>`;
-  }).join('');
-
-  document.getElementById('folderTable').innerHTML =
-    '<thead><tr><th>收藏夹</th><th>篇数</th></tr></thead><tbody>' +
-    folders.map(f => `<tr><td>${esc(f.name)}</td><td class="num">${f.count}</td></tr>`).join('') +
-    '</tbody>';
-
-  function esc(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
-
-  const saved = localStorage.getItem('fendashi-theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  const btn = document.getElementById('themeBtnMobile');
-  if (btn) btn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('fendashi-theme', next);
-  });
-})();
-</script>
+<script src="site.js" defer></script>
+<script src="page.js" defer></script>
 </body>
 </html>

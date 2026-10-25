@@ -1,4 +1,7 @@
-// === shared state ===
+// =========================================================
+//   芬达石森林 · app.js
+//   首页：分类筛选 / 排序 / 搜索 / 分页加载
+//   =========================================================
 const state = {
   posts: [],
   cats: [],
@@ -8,28 +11,44 @@ const state = {
   shown: 30,
 };
 
-const TAG_LABELS = {
-  tools: '工具',
-  projects: '项目',
-  notes: '笔记',
-  life: '生活',
-  skills: '技能',
-};
-
-// 分类顺序（跟 posts.json 一致，但按数量排更好读 —— 这里按预设）
-const CAT_ORDER = [
-  'all', '职场成长', '健身健康', '自我成长', '影音剪辑', '理财消费', '生活杂项',
-  '缝纫手作', '旅行户外', '游戏娱乐', '居住家装', '语言学习', '饮食营养',
-  '情感关系', '萌宠动物', 'journal',
-];
-
 const PAGE = 30;
 
-// === boot ===
+function escape(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function catNameOf(p) {
+  if (!p) return '';
+  if (p.cat === 'journal') return '手记';
+  const c = state.cats.find(x => x.slug === p.cat);
+  return c ? c.name : (p.theme || p.tags?.[0]) || '其他';
+}
+
+// ---- 搜索：标题 / 摘要 / 作者 / 主题 / 收藏夹 / 真实话题标签 ----
+function haystack(p) {
+  return [
+    p.title, p.excerpt, p.author, p.folder, p.theme,
+    ...(p.tags || []), ...(p.realTags || []),
+  ].join(' ').toLowerCase();
+}
+
+// 暴露给 site.js：侧边栏搜索框直接驱动首页筛选
+window.__homeSearch = function (q) {
+  state.query = (q || '').trim().toLowerCase();
+  state.shown = PAGE;
+  draw();
+};
+
+// ---- 启动 ----
 boot().catch(err => {
   console.error(err);
   const el = document.getElementById('postList');
-  if (el) el.innerHTML = `<div class="empty">加载失败：${String(err)}</div>`;
+  if (el) el.innerHTML = `<div class="empty">加载失败：${escape(String(err))}</div>`;
 });
 
 async function boot() {
@@ -47,7 +66,7 @@ async function boot() {
 
 // 从 URL hash 直接选中分类（分类索引页跳过来用）
 function applyHash() {
-  const h = (location.hash || '').replace('#', '').trim();
+  const h = (location.hash || '').replace('#', '').replace(/^\//, '').trim();
   if (!h) return;
   const c = state.cats.find(x => x.slug === h);
   if (!c) return;
@@ -62,7 +81,7 @@ function applyHash() {
 }
 
 function bindUI() {
-  // tabs
+  // 排序
   document.querySelectorAll('#tabs .tab').forEach(t => {
     t.addEventListener('click', () => {
       state.sort = t.dataset.sort;
@@ -74,17 +93,7 @@ function bindUI() {
     });
   });
 
-  // search
-  const search = document.getElementById('searchInput');
-  if (search) {
-    search.addEventListener('input', () => {
-      state.query = search.value.trim().toLowerCase();
-      state.shown = PAGE;
-      draw();
-    });
-  }
-
-  // load more
+  // 加载更多
   const more = document.getElementById('loadMore');
   if (more) {
     more.addEventListener('click', () => {
@@ -92,38 +101,15 @@ function bindUI() {
       draw();
     });
   }
-
-  // dark mode toggle
-  const darkBtn = document.getElementById('darkBtn');
-  const themeBtn = document.getElementById('themeBtn');
-  const darkBtnMobile = document.getElementById('themeBtnMobile');
-  const saved = localStorage.getItem('fendashi-theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  const toggle = () => {
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('fendashi-theme', next);
-  };
-  if (darkBtn) darkBtn.addEventListener('click', toggle);
-  if (themeBtn) themeBtn.addEventListener('click', toggle);
-  if (darkBtnMobile) darkBtnMobile.addEventListener('click', toggle);
 }
 
 function drawCatBar() {
   const bar = document.getElementById('catBar');
   if (!bar) return;
-  const map = {};
-  state.cats.forEach(c => { map[c.name] = c; });
-  const order = CAT_ORDER.filter(n => map[n]);
-  // 补上 posts.json 里新增但不在预设里的
-  state.cats.forEach(c => { if (!order.includes(c.name)) order.push(c.name); });
-
-  bar.innerHTML = order.map(name => {
-    const c = map[name];
-    const slug = c.slug === 'all' ? 'all' : (c.slug === 'journal' ? 'journal' : c.slug);
-    return `<button class="cat-chip${name === 'all' ? ' is-active' : ''}" data-cat="${slug}"
-      data-name="${name}">${escape(name)}<span class="cat-count">${c.count}</span></button>`;
+  const list = state.cats.slice();
+  bar.innerHTML = list.map(c => {
+    return `<button class="cat-chip${c.slug === 'all' ? ' is-active' : ''}" data-cat="${escape(c.slug)}"
+      data-name="${escape(c.name)}">${escape(c.name)}<span class="cat-count">${c.count}</span></button>`;
   }).join('');
 
   bar.querySelectorAll('.cat-chip').forEach(btn => {
@@ -131,15 +117,10 @@ function drawCatBar() {
       state.cat = btn.dataset.cat;
       state.shown = PAGE;
       bar.querySelectorAll('.cat-chip').forEach(x => x.classList.toggle('is-active', x === btn));
+      history.replaceState(null, '', '#' + state.cat);
       draw();
     });
   });
-}
-
-function catNameOf(p) {
-  if (p.cat === 'journal') return '手记';
-  const c = state.cats.find(x => x.slug === p.cat);
-  return c ? c.name : (p.tags && p.tags[0]) || '其他';
 }
 
 function draw() {
@@ -152,21 +133,14 @@ function draw() {
 
   let list = state.posts.slice();
 
-  // 分类筛选
   if (state.cat && state.cat !== 'all') {
     list = list.filter(p => p.cat === state.cat);
   }
 
-  // 搜索
   if (state.query) {
-    list = list.filter(p => {
-      const hay = [p.title, p.excerpt, p.author, p.folder, p.theme,
-        ...(p.tags || []), ...(p.tags || []).map(t => TAG_LABELS[t] || t)].join(' ').toLowerCase();
-      return hay.includes(state.query);
-    });
+    list = list.filter(p => haystack(p).includes(state.query));
   }
 
-  // 排序
   if (state.sort === 'hot') {
     list.sort((a, b) => (b.views || 0) - (a.views || 0));
   } else if (state.sort === 'comments') {
@@ -186,7 +160,7 @@ function draw() {
     return;
   }
 
-  // hero（只在无搜索 + 有内容时）
+  // 首篇做 hero
   if (heroEl) {
     if (state.query || total === 1) {
       heroEl.innerHTML = '';
@@ -202,13 +176,8 @@ function draw() {
   if (moreEl) moreEl.style.display = (state.shown < list.length) ? '' : 'none';
 }
 
-function renderHero(p) {
-  return `
-    <a class="post-hero" href="./${p.path}">
-      <span class="post-hero-tag">${escape(catNameOf(p))}</span>
-      <h2 class="post-title">${escape(p.title)}</h2>
-      <p class="post-excerpt">${escape(p.excerpt || '')}</p>
-      <div class="post-meta">
+function metaBlock(p) {
+  return `<div class="post-meta">
         <span>${escape((p.date || '').slice(0, 10))}</span>
         <span class="sep">·</span>
         <span class="post-meta-icon">
@@ -220,7 +189,16 @@ function renderHero(p) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           ${p.comments || 0}
         </span>
-      </div>
+      </div>`;
+}
+
+function renderHero(p) {
+  return `
+    <a class="post-hero" href="./${p.path}">
+      <span class="post-hero-tag">${escape(catNameOf(p))}</span>
+      <h2 class="post-title">${escape(p.title)}</h2>
+      <p class="post-excerpt">${escape(p.excerpt || '')}</p>
+      ${metaBlock(p)}
     </a>
   `;
 }
@@ -234,28 +212,7 @@ function renderCard(p) {
       </div>
       <h3 class="post-title">${escape(p.title)}</h3>
       <p class="post-excerpt">${escape(p.excerpt || '')}</p>
-      <div class="post-meta">
-        <span>${escape((p.date || '').slice(0, 10))}</span>
-        <span class="sep">·</span>
-        <span class="post-meta-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          ${p.views || 0}
-        </span>
-        <span class="sep">·</span>
-        <span class="post-meta-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          ${p.comments || 0}
-        </span>
-      </div>
+      ${metaBlock(p)}
     </a>
   `;
-}
-
-function escape(s) {
-  return String(s ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 }
